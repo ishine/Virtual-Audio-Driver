@@ -18,11 +18,11 @@ Abstract:
 // Comprehensive audio format support:
 // - Bit depths: 8-bit, 16-bit, 24-bit, 32-bit PCM, and 32-bit IEEE Float
 // - Sample rates: 8000 Hz to 384000 Hz (all common rates)
-// - Channels: Stereo (2 channels)
+// - Channels: Stereo (2), 5.1 Surround (6), and 7.1 Surround (8 channels)
 //
-#define SPEAKER_DEVICE_MAX_CHANNELS         2    // Max Channels.
+#define SPEAKER_DEVICE_MAX_CHANNELS         8    // Max Channels (supports up to 7.1).
 
-#define SPEAKER_HOST_MAX_CHANNELS           2    // Max Channels.
+#define SPEAKER_HOST_MAX_CHANNELS           8    // Max Channels (supports up to 7.1).
 
 //
 // Change bits-per-sample range:
@@ -1135,6 +1135,212 @@ KSDATAFORMAT_WAVEFORMATEXTENSIBLE SpeakerHostPinSupportedDeviceFormats[] =
             KSAUDIO_SPEAKER_STEREO,
             STATICGUIDOF(KSDATAFORMAT_SUBTYPE_IEEE_FLOAT)
         }
+    },
+
+    //-------------------------------------------------
+    // Multi-channel formats (5.1 Surround Sound)
+    //-------------------------------------------------
+    // 40) 16-bit, 5.1 Surround, 48000 Hz
+    {
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0, 0, 0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                6,                                      // 5.1 = 6 channels
+                48000,
+                48000 * 6 * 16 / 8,
+                6 * 16 / 8,
+                16,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            16,
+            KSAUDIO_SPEAKER_5POINT1,                    // 5.1 channel mask
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+
+    // 41) 24-bit, 5.1 Surround, 48000 Hz
+    {
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0, 0, 0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                6,
+                48000,
+                48000 * 6 * 24 / 8,
+                6 * 24 / 8,
+                24,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            24,
+            KSAUDIO_SPEAKER_5POINT1,
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+
+    // 42) 16-bit, 5.1 Surround, 96000 Hz
+    {
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0, 0, 0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                6,
+                96000,
+                96000 * 6 * 16 / 8,
+                6 * 16 / 8,
+                16,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            16,
+            KSAUDIO_SPEAKER_5POINT1,
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+
+    // 43) 24-bit, 5.1 Surround, 96000 Hz
+    {
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0, 0, 0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                6,
+                96000,
+                96000 * 6 * 24 / 8,
+                6 * 24 / 8,
+                24,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            24,
+            KSAUDIO_SPEAKER_5POINT1,
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+
+    //-------------------------------------------------
+    // Multi-channel formats (7.1 Surround Sound)
+    //-------------------------------------------------
+    // 44) 16-bit, 7.1 Surround, 48000 Hz
+    {
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0, 0, 0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                8,                                      // 7.1 = 8 channels
+                48000,
+                48000 * 8 * 16 / 8,
+                8 * 16 / 8,
+                16,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            16,
+            KSAUDIO_SPEAKER_7POINT1,                    // 7.1 channel mask
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+
+    // 45) 24-bit, 7.1 Surround, 48000 Hz
+    {
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0, 0, 0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                8,
+                48000,
+                48000 * 8 * 24 / 8,
+                8 * 24 / 8,
+                24,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            24,
+            KSAUDIO_SPEAKER_7POINT1,
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+
+    // 46) 16-bit, 7.1 Surround, 96000 Hz
+    {
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0, 0, 0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                8,
+                96000,
+                96000 * 8 * 16 / 8,
+                8 * 16 / 8,
+                16,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            16,
+            KSAUDIO_SPEAKER_7POINT1,
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+
+    // 47) 24-bit, 7.1 Surround, 96000 Hz
+    {
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0, 0, 0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                8,
+                96000,
+                96000 * 8 * 24 / 8,
+                8 * 24 / 8,
+                24,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            24,
+            KSAUDIO_SPEAKER_7POINT1,
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
     }
 };
 
@@ -1389,6 +1595,138 @@ MODE_AND_DEFAULT_FORMAT SpeakerHostPinSupportedDeviceModes[] =
     {
         STATIC_AUDIO_SIGNALPROCESSINGMODE_DEFAULT,
         &SpeakerHostPinSupportedDeviceFormats[39].DataFormat
+    },
+
+    //-------------------------------------------------
+    // Multi-channel formats (5.1 and 7.1) in DEFAULT mode
+    //-------------------------------------------------
+    // 40) 16-bit, 5.1 Surround, 48000 Hz
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_DEFAULT,
+        &SpeakerHostPinSupportedDeviceFormats[40].DataFormat
+    },
+
+    // 41) 24-bit, 5.1 Surround, 48000 Hz
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_DEFAULT,
+        &SpeakerHostPinSupportedDeviceFormats[41].DataFormat
+    },
+
+    // 42) 16-bit, 5.1 Surround, 96000 Hz
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_DEFAULT,
+        &SpeakerHostPinSupportedDeviceFormats[42].DataFormat
+    },
+
+    // 43) 24-bit, 5.1 Surround, 96000 Hz
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_DEFAULT,
+        &SpeakerHostPinSupportedDeviceFormats[43].DataFormat
+    },
+
+    // 44) 16-bit, 7.1 Surround, 48000 Hz
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_DEFAULT,
+        &SpeakerHostPinSupportedDeviceFormats[44].DataFormat
+    },
+
+    // 45) 24-bit, 7.1 Surround, 48000 Hz
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_DEFAULT,
+        &SpeakerHostPinSupportedDeviceFormats[45].DataFormat
+    },
+
+    // 46) 16-bit, 7.1 Surround, 96000 Hz
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_DEFAULT,
+        &SpeakerHostPinSupportedDeviceFormats[46].DataFormat
+    },
+
+    // 47) 24-bit, 7.1 Surround, 96000 Hz
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_DEFAULT,
+        &SpeakerHostPinSupportedDeviceFormats[47].DataFormat
+    },
+
+    //-------------------------------------------------
+    // COMMUNICATIONS mode - optimized for voice calls
+    //-------------------------------------------------
+    // 48) 16-bit, Stereo, 48000 Hz (COMMUNICATIONS)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_COMMUNICATIONS,
+        &SpeakerHostPinSupportedDeviceFormats[0].DataFormat
+    },
+
+    // 49) 16-bit, Stereo, 44100 Hz (COMMUNICATIONS)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_COMMUNICATIONS,
+        &SpeakerHostPinSupportedDeviceFormats[8].DataFormat
+    },
+
+    //-------------------------------------------------
+    // SPEECH mode - optimized for speech recognition
+    //-------------------------------------------------
+    // 50) 16-bit, Stereo, 16000 Hz (SPEECH)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_SPEECH,
+        &SpeakerHostPinSupportedDeviceFormats[5].DataFormat
+    },
+
+    // 51) 16-bit, Stereo, 48000 Hz (SPEECH)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_SPEECH,
+        &SpeakerHostPinSupportedDeviceFormats[0].DataFormat
+    },
+
+    //-------------------------------------------------
+    // MEDIA mode - optimized for media playback
+    //-------------------------------------------------
+    // 52) 16-bit, Stereo, 44100 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &SpeakerHostPinSupportedDeviceFormats[8].DataFormat
+    },
+
+    // 53) 24-bit, Stereo, 48000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &SpeakerHostPinSupportedDeviceFormats[1].DataFormat
+    },
+
+    // 54) 16-bit, Stereo, 96000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &SpeakerHostPinSupportedDeviceFormats[10].DataFormat
+    },
+
+    // 55) 24-bit, Stereo, 96000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &SpeakerHostPinSupportedDeviceFormats[15].DataFormat
+    },
+
+    // 56) 16-bit, 5.1 Surround, 48000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &SpeakerHostPinSupportedDeviceFormats[40].DataFormat
+    },
+
+    // 57) 24-bit, 5.1 Surround, 48000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &SpeakerHostPinSupportedDeviceFormats[41].DataFormat
+    },
+
+    // 58) 16-bit, 7.1 Surround, 48000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &SpeakerHostPinSupportedDeviceFormats[44].DataFormat
+    },
+
+    // 59) 24-bit, 7.1 Surround, 48000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &SpeakerHostPinSupportedDeviceFormats[45].DataFormat
     }
 };
 
@@ -1437,7 +1775,7 @@ KSDATARANGE_AUDIO SpeakerPinDataRangesStream[] =
         },
 
         // --- KSDATARANGE_AUDIO fields ---
-        2,       // MaximumChannels
+        8,       // MaximumChannels (supports up to 7.1)
         8,       // MinimumBitsPerSample
         32,      // MaximumBitsPerSample
         8000,    // MinimumSampleFrequency
@@ -1457,7 +1795,7 @@ KSDATARANGE_AUDIO SpeakerPinDataRangesStream[] =
         },
 
         // --- KSDATARANGE_AUDIO fields ---
-        2,       // MaximumChannels
+        8,       // MaximumChannels (supports up to 7.1)
         32,      // MinimumBitsPerSample
         32,      // MaximumBitsPerSample
         8000,    // MinimumSampleFrequency

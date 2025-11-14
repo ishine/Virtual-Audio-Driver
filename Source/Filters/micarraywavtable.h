@@ -1109,6 +1109,81 @@ MODE_AND_DEFAULT_FORMAT MicArrayPinSupportedDeviceModes[] =
         STATIC_AUDIO_SIGNALPROCESSINGMODE_RAW,
         &MicArrayPinSupportedDeviceFormats[34].DataFormat
     },
+
+    //-------------------------------------------------
+    // COMMUNICATIONS mode - optimized for voice calls
+    //-------------------------------------------------
+    // 35) 16-bit, Stereo, 48000 Hz (COMMUNICATIONS)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_COMMUNICATIONS,
+        &MicArrayPinSupportedDeviceFormats[2].DataFormat
+    },
+
+    // 36) 16-bit, Stereo, 44100 Hz (COMMUNICATIONS)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_COMMUNICATIONS,
+        &MicArrayPinSupportedDeviceFormats[1].DataFormat
+    },
+
+    // 37) 16-bit, Stereo, 16000 Hz (COMMUNICATIONS)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_COMMUNICATIONS,
+        &MicArrayPinSupportedDeviceFormats[14].DataFormat
+    },
+
+    //-------------------------------------------------
+    // SPEECH mode - optimized for speech recognition
+    //-------------------------------------------------
+    // 38) 16-bit, Stereo, 16000 Hz (SPEECH)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_SPEECH,
+        &MicArrayPinSupportedDeviceFormats[14].DataFormat
+    },
+
+    // 39) 16-bit, Stereo, 48000 Hz (SPEECH)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_SPEECH,
+        &MicArrayPinSupportedDeviceFormats[2].DataFormat
+    },
+
+    // 40) 32-bit, Stereo, 48000 Hz (SPEECH)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_SPEECH,
+        &MicArrayPinSupportedDeviceFormats[0].DataFormat
+    },
+
+    //-------------------------------------------------
+    // MEDIA mode - optimized for media recording
+    //-------------------------------------------------
+    // 41) 16-bit, Stereo, 44100 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &MicArrayPinSupportedDeviceFormats[1].DataFormat
+    },
+
+    // 42) 24-bit, Stereo, 48000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &MicArrayPinSupportedDeviceFormats[20].DataFormat
+    },
+
+    // 43) 24-bit, Stereo, 96000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &MicArrayPinSupportedDeviceFormats[3].DataFormat
+    },
+
+    // 44) 24-bit, Stereo, 192000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &MicArrayPinSupportedDeviceFormats[4].DataFormat
+    },
+
+    // 45) 32-bit IEEE Float, Stereo, 48000 Hz (MEDIA)
+    {
+        STATIC_AUDIO_SIGNALPROCESSINGMODE_MEDIA,
+        &MicArrayPinSupportedDeviceFormats[5].DataFormat
+    },
 };
 
 //=============================================================================
